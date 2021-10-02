@@ -193,7 +193,7 @@ export default class EventOrganizerMail extends EventMail {
         filename: "event.ics",
         content: this.getiCalEventAsString(),
       },
-      from: `Cal.com <${this.getMailerOptions().from}>`,
+      from: `Uvi Health <${this.getMailerOptions().from}>`,
       to: toAddresses.join(","),
       subject: this.getSubject(),
       html: this.getHtmlRepresentation(),

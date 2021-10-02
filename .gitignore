@@ -2,6 +2,7 @@
 
 # .env file
 .env
+.env.production
 
 # dependencies
 /node_modules

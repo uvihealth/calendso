@@ -1,4 +1,8 @@
+import sgTransport from "nodemailer-sendgrid-transport";
+
 function detectTransport(): string | any {
+  return sgTransport({ auth: { api_key: process.env.SEND_GRID_API_KEY } });
+
   if (process.env.EMAIL_SERVER) {
     return process.env.EMAIL_SERVER;
   }

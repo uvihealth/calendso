@@ -18,7 +18,7 @@ const sendEmail = (invitation: any, { provider }) =>
 
     nodemailer.createTransport(transport).sendMail(
       {
-        from: `Cal.com <${from}>`,
+        from: `Uvi Health <${from}>`,
         to: invitation.toEmail,
         subject:
           (invitation.from ? invitation.from + " invited you" : "You have been invited") +

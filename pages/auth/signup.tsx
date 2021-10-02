@@ -131,23 +131,25 @@ export default function Signup(props) {
 }
 
 export async function getServerSideProps(ctx) {
+  /*
   if (!ctx.query.token) {
     return {
       notFound: true,
     };
-  }
-  const verificationRequest = await prisma.verificationRequest.findUnique({
-    where: {
-      token: ctx.query.token,
-    },
-  });
+  } */
+  const verificationRequest =
+    (await prisma.verificationRequest.findUnique({
+      where: {
+        token: ctx.query.token,
+      },
+    })) || {};
 
   // for now, disable if no verificationRequestToken given or token expired
-  if (!verificationRequest || verificationRequest.expires < new Date()) {
+  /* if (!verificationRequest || verificationRequest.expires < new Date()) {
     return {
       notFound: true,
     };
-  }
+  } */
 
   const existingUser = await prisma.user.findFirst({
     where: {
@@ -170,5 +172,5 @@ export async function getServerSideProps(ctx) {
     };
   }
 
-  return { props: { email: verificationRequest.identifier } };
+  return { props: { email: verificationRequest.identifier || null } };
 }
