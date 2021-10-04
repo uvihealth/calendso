@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const data = req.body;
-  const { email, password } = data;
+  const { email, password, tokenSignup } = data;
   const username = slugify(data.username);
 
   if (!username) {
@@ -41,7 +41,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     },
   });
 
-  if (existingUser) {
+  if (existingUser && !tokenSignup) {
     const message: string =
       existingUser.email !== email ? "Username already taken" : "Email address is already registered";
 

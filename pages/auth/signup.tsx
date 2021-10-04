@@ -36,6 +36,7 @@ export default function Signup(props) {
         username: e.target.username.value,
         password,
         email,
+        tokenSignup: props.tokenSignup,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -172,5 +173,5 @@ export async function getServerSideProps(ctx) {
     };
   }
 
-  return { props: { email: verificationRequest.identifier || null } };
+  return { props: { email: verificationRequest.identifier || null, tokenSignup: !!verificationRequest } };
 }
