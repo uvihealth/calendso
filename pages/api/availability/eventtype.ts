@@ -124,7 +124,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (req.body.users) {
         data.users = {
           set: [],
-          connect: req.body.users.map((id: number) => ({ id })),
+          connect: req.body.users.map((id: number) => ({ id: parseInt(id) })),
         };
       }
 
