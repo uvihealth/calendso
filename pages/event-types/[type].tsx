@@ -169,8 +169,8 @@ const EventTypePage = (props: inferSSRProps<typeof getServerSideProps>) => {
       advancedPayload.minimumBookingNotice = asNumberOrUndefined(formData.minimumBookingNotice);
       // prettier-ignore
       advancedPayload.price =
-        !requirePayment ? undefined                                                     :
-        formData.price  ? Math.round(parseFloat(asStringOrThrow(formData.price)) * 100) :
+        !requirePayment ? undefined :
+          formData.price ? Math.round(parseFloat(asStringOrThrow(formData.price)) * 100) :
         /* otherwise */   0;
       advancedPayload.currency = currency;
     }
@@ -297,7 +297,7 @@ const EventTypePage = (props: inferSSRProps<typeof getServerSideProps>) => {
     e.preventDefault();
 
     const customInput: EventTypeCustomInput = {
-      id: -1,
+      id: 0,
       eventTypeId: -1,
       label: e.currentTarget.label.value,
       placeholder: e.currentTarget.placeholder?.value,

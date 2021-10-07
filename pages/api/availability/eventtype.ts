@@ -96,6 +96,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       currency: req.body.currency,
     };
 
+    console.log("Body here:", JSON.stringify(req.body, null, 2));
+    console.log(JSON.stringify(data, null, 2));
+
     if (req.body.schedulingType) {
       data.schedulingType = req.body.schedulingType;
     }
