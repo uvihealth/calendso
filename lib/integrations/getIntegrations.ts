@@ -17,6 +17,7 @@ function getIntegrations(credentials: CredentialData[]) {
       title: "Google Calendar",
       imageSrc: "integrations/google-calendar.svg",
       description: "For personal and business calendars",
+      signInBtn: "integrations/google.png",
     },
     {
       installed: !!(process.env.MS_GRAPH_CLIENT_ID && process.env.MS_GRAPH_CLIENT_SECRET),

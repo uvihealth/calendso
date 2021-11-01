@@ -155,16 +155,28 @@ export default function Home({ integrations }: inferSSRProps<typeof getServerSid
                     <div className="w-1/12 mr-4 pt-2">
                       <img className="h-8 w-8 mr-2" src={integration.imageSrc} alt={integration.title} />
                     </div>
-                    <div className="w-10/12">
+                    <div className="w-7/12">
                       <h2 className="font-cal text-gray-800 font-medium">{integration.title}</h2>
                       <p className="text-gray-400 text-sm">{integration.description}</p>
                     </div>
-                    <div className="w-2/12 text-right pt-2">
-                      <button
-                        onClick={() => integrationHandler(integration.type)}
-                        className="font-medium text-neutral-900 hover:text-neutral-500">
-                        Add
-                      </button>
+                    <div className="w-4/12 text-right pt-2">
+                      {integration.type === "google_calendar" ? (
+                        <button
+                          onClick={() => integrationHandler(integration.type)}
+                          className="font-medium text-neutral-900 hover:text-neutral-500">
+                          <img
+                            // className="h-8 w-8 mr-2"
+                            src={integration.signInBtn}
+                            alt="google signin button"
+                          />
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => integrationHandler(integration.type)}
+                          className="font-medium text-neutral-900 hover:text-neutral-500">
+                          Add
+                        </button>
+                      )}
                     </div>
                   </li>
                 );
