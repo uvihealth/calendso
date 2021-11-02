@@ -152,9 +152,12 @@ export default function Home({ integrations }: inferSSRProps<typeof getServerSid
               .map((integration) => {
                 return (
                   <li key={integration.type} className="flex py-4">
-                    <div className="w-1/12 mr-4 pt-2">
-                      <img className="h-8 w-8 mr-2" src={integration.imageSrc} alt={integration.title} />
-                    </div>
+                    {integration.type === "google_calendar" ? null : (
+                      <div className="w-1/12 mr-4 pt-2">
+                        <img className="h-8 w-8 mr-2" src={integration.imageSrc} alt={integration.title} />
+                      </div>
+                    )}
+
                     <div className="w-7/12">
                       <h2 className="font-cal text-gray-800 font-medium">{integration.title}</h2>
                       <p className="text-gray-400 text-sm">{integration.description}</p>
